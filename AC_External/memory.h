@@ -3,8 +3,7 @@
 #include <TlHelp32.h>
 #include <iostream>
 
-class Memory
-{
+class Memory {
 public:
 	DWORD GetPIDByProcessName(const wchar_t* processName);
 	uintptr_t GetProcessBaseAddress(DWORD processId);
