@@ -1,63 +1,25 @@
 #include <iostream>
-#include <Windows.h>
-#include <TlHelp32.h>
-
-
-class Memory
-{
-public:
-	DWORD GetPIDByProcessName(const wchar_t* processName)
-	{
-		DWORD PID = 0;
-		HANDLE hProcessSnapshot;
-		PROCESSENTRY32 PE32;
-
-		// Take a snapshot of all processes in the system.
-		hProcessSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
-		if (hProcessSnapshot == INVALID_HANDLE_VALUE)
-		{
-			std::cout << "CreateToolhelp32Snapshot Invalid handle";
-			return 0;
-		}
-
-		// Set the size of the structure before using it.
-		PE32.dwSize = sizeof(PROCESSENTRY32);
-
-		// Retrieves information about the first process and exit if unsuccessful
-		if (!Process32First(hProcessSnapshot, &PE32))
-		{
-			std::cout << "<Process32First> Error " << GetLastError() << '\n';
-			CloseHandle(hProcessSnapshot);
-			return 0;
-		}
-
-		// Now walk the snapshot of processes,
-		// and find the right process then get its PID
-		while (Process32Next(hProcessSnapshot, &PE32)) {
-
-			if (wcscmp(processName, PE32.szExeFile) == 0)
-			{
-				PID = PE32.th32ProcessID;
-				break;
-			}
-		}
-
-		CloseHandle(hProcessSnapshot);
-		return PID;
-	}
-
-};
-
-
+#include "memory.h"
 
 int main()
 {
-	Memory mem;
 
-	// Get ProcId of the target process
-	std::cout << mem.GetPIDByProcessName(L"brave.exe");
+	DWORD processId = mem.GetPIDByProcessName(L"ac_client.exe"); // Get Process ID
 
-	// Get module base address
-	// open handle to process
-	// read memory
+	HANDLE hProcess = mem.OpenProcessHandle(processId); // Open Process Handle
+
+	uintptr_t baseAddress = mem.GetProcessBaseAddress(processId); // Get Base Address
+
+	DWORD rpmAddress = 0x006EF294; //Address for RPM
+	DWORD rpmOutput = mem.ReadMemory(hProcess, rpmAddress); // Read RPM Value
+	std::cout << "RPM Value: " << rpmOutput << std::endl; // Output RPM Value
+
+	DWORD wpmAddress = 0x006EF294; //Address for WPM
+	int WPMValue = 9000; // WPM Value
+	mem.WriteMemory(hProcess, wpmAddress, WPMValue); // Write WPM Value
+	
+
+	CloseHandle(hProcess);// close handle
+	
+	return 0;
 }
