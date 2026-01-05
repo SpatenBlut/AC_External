@@ -85,8 +85,7 @@ DWORD Memory::WriteMemory(HANDLE hProcess, DWORD address, int newValue) {
 	BOOL result = WriteProcessMemory(hProcess, (LPVOID)address, &newValue, sizeof(newValue), nullptr); // write memory function
 
     if (result) {
-		std::cout << "[wpm] success\n"; // wpm successful
-        return 0; 
+		//std::cout << "[wpm] success\n"; // wpm successful
     }
     else {
 		DWORD errorCode = GetLastError(); // wpm failed
