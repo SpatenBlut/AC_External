@@ -2,6 +2,7 @@
 #include "offset.h"
 #include "memory.h"
 #include "EntityList.h"
+#include "SelfMod.h"
 
 int main()
 {
@@ -9,26 +10,20 @@ int main()
 	HANDLE hProcess = mem.OpenProcessHandle(processId); // Open Process Handle
 	uintptr_t baseAddress = mem.GetProcessBaseAddress(processId); // Get Base Address
 
-	// Initialisiere die Offsets mit der Base-Adresse
+	// Initialis Offsets
 	offset::Init(baseAddress);
 
+	std::cout << "AC External Injected!\n";
+	Sleep(1000);
 
-	
-	uintptr_t offset = mem.ReadMemory(hProcess, offset::LocalPlayer);
-	uintptr_t healthAddress = offset + offset::HealthOffset;
-	std::cout << "Local Player Health: " << std::dec  << mem.ReadMemory(hProcess, healthAddress) << std::endl;
+	while (true) {
+		HealthHack(hProcess);
+		AmmoHack(hProcess);
+		FastFire(hProcess);
 
-
-	entitylist(hProcess);
-	
-
-	
-
-
-	DWORD wpmAddress = 0x008CED04; //Address for WPM
-	int WPMValue = 9999; // WPM Value
-	DWORD wpmOutput = mem.WriteMemory(hProcess, wpmAddress, WPMValue); // Write WPM Value
-	
+		system("cls");
+		entitylist(hProcess);
+	}	
 
 	CloseHandle(hProcess);// close handle
 	

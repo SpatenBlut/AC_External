@@ -131,6 +131,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="memory.cpp" />
     <ClCompile Include="offset.cpp" />
+    <ClCompile Include="SelfMod.cpp" />
+    <ClCompile Include="SelfMod.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EntityList.h" />
