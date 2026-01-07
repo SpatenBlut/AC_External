@@ -1,4 +1,4 @@
-#include "SelfMod.h"
+#include "LocalPlayer.h"
 
 uintptr_t offsets;
 
@@ -26,3 +26,20 @@ void FastFire(HANDLE hProcess) {
 	uintptr_t FastFireAddress = offsets + offset::FastFireRifle;
 	DWORD wpmFastFireOutput = mem.WriteMemory(hProcess, FastFireAddress, 0);
 }
+
+
+void LocalPlayerPosition(HANDLE hProcess) {
+
+	uintptr_t LocalPlayer = mem.ReadMemory(hProcess, offset::LocalPlayer);
+
+	uintptr_t HeadAddressX = LocalPlayer + offset::HeadPositionX;
+	uintptr_t HeadAddressY = LocalPlayer + offset::HeadPositionY;
+	uintptr_t HeadAddressZ = LocalPlayer + offset::HeadPositionZ;
+
+	int rawX = mem.ReadMemory(hProcess, HeadAddressX);
+	int rawY = mem.ReadMemory(hProcess, HeadAddressY);
+	int rawZ = mem.ReadMemory(hProcess, HeadAddressZ);
+
+	std::cout << "LocalPlayer" << ", Hposition: " << "X " << convertToFloat(rawX) << "    Y " << convertToFloat(rawY) << "    Z " << convertToFloat(rawZ) << std::endl;
+}
+

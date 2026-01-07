@@ -2,7 +2,7 @@
 #include "offset.h"
 #include "memory.h"
 #include "EntityList.h"
-#include "SelfMod.h"
+#include "LocalPlayer.h"
 
 int main()
 {
@@ -20,9 +20,12 @@ int main()
 		HealthHack(hProcess);
 		AmmoHack(hProcess);
 		FastFire(hProcess);
+		//Bhop
 
 		system("cls");
-		entitylist(hProcess);
+		LocalPlayerPosition(hProcess);
+		//entitylist(hProcess);
+		Sleep(1);
 	}	
 
 	CloseHandle(hProcess);// close handle

@@ -131,8 +131,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="memory.cpp" />
     <ClCompile Include="offset.cpp" />
-    <ClCompile Include="SelfMod.cpp" />
-    <ClCompile Include="SelfMod.h" />
+    <ClCompile Include="LocalPlayer.cpp" />
+    <ClCompile Include="LocalPlayer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EntityList.h" />

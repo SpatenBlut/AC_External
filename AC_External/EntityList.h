@@ -5,3 +5,4 @@
 #include "memory.h"
 
 void entitylist(HANDLE hProcess);
+float convertToFloat(int rawValue);
