@@ -25,7 +25,7 @@ void entitylist(HANDLE hProcess) {
 		int rawY = mem.ReadMemory(hProcess, HeadAddressY);
 		int rawZ = mem.ReadMemory(hProcess, HeadAddressZ);
 		
-		std::cout << "P" << i << ", Hposition: " << "X " << convertToFloat(rawX) << "    Y " << convertToFloat(rawY) << "    Z " << convertToFloat(rawZ) << std::endl;
+		std::cout << "Player " << i << "      X " << convertToFloat(rawX) << "    Y " << convertToFloat(rawY) << "    Z " << convertToFloat(rawZ) << std::endl; // Head Position
 	}
 
 }

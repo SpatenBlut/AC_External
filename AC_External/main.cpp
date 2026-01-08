@@ -17,15 +17,19 @@ int main()
 	Sleep(1000);
 
 	while (true) {
+
 		HealthHack(hProcess);
 		AmmoHack(hProcess);
 		FastFire(hProcess);
 		//Bhop
 
 		system("cls");
+
+		LocalPlayerViewAngel(hProcess);
 		LocalPlayerPosition(hProcess);
-		//entitylist(hProcess);
-		Sleep(1);
+		entitylist(hProcess);
+
+		Sleep(5);
 	}	
 
 	CloseHandle(hProcess);// close handle

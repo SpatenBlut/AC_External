@@ -34,7 +34,7 @@ namespace offset
 		HeadPositionX =  0x4;
 		HeadPositionY =  0xC;
 		HeadPositionZ =  0x8;
-		PlayerCameraX =  0x34C;
+		PlayerCameraX =  0x34;
 		PlayerCameraY =  0x38;
 	}
 }

@@ -6,4 +6,5 @@
 void HealthHack(HANDLE hProcess);
 void AmmoHack(HANDLE hProcess);
 void FastFire(HANDLE hProcess);
+void LocalPlayerViewAngel(HANDLE hProcess);
 void LocalPlayerPosition(HANDLE hProcess);
