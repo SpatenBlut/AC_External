@@ -29,7 +29,7 @@ int main()
 		LocalPlayerPosition(hProcess);
 		entitylist(hProcess);
 
-		Sleep(5);
+		Sleep(500);
 	}	
 
 	CloseHandle(hProcess);// close handle

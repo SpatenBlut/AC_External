@@ -67,21 +67,7 @@ HANDLE Memory::OpenProcessHandle(DWORD processId) {
 	}
 }
 
-// Read Process Memory 
-DWORD Memory::ReadMemory(HANDLE hProcess, DWORD address) {
-    DWORD value;
-	BOOL result = ReadProcessMemory(hProcess, (LPCVOID)address, &value, sizeof(DWORD), nullptr); // read memory function
-
-    if (result) {
-		return value; // rpm successful
-    }
-    else {
-		DWORD errorCode = GetLastError(); // rpm failed
-        return errorCode;
-    }
-}
-
-DWORD Memory::WriteMemory(HANDLE hProcess, DWORD address, int newValue) {
+DWORD Memory::WriteMemory(HANDLE hProcess, uintptr_t address, int newValue) {
 	BOOL result = WriteProcessMemory(hProcess, (LPVOID)address, &newValue, sizeof(newValue), nullptr); // write memory function
 
     if (result) {

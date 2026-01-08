@@ -1,6 +1,5 @@
 #include "memory.h"
 #include "offset.h"
-#include "EntityList.h"
 #include <Windows.h>
 
 void HealthHack(HANDLE hProcess);

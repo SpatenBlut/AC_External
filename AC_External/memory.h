@@ -8,8 +8,20 @@ public:
 	DWORD GetPIDByProcessName(const wchar_t* processName);
 	uintptr_t GetProcessBaseAddress(DWORD processId);
 	HANDLE OpenProcessHandle(DWORD processId);
-	DWORD ReadMemory(HANDLE hProcess, DWORD address);
-	DWORD WriteMemory(HANDLE hProcess, DWORD address, int newValue);
+
+    template<typename T>
+    T ReadMemory(HANDLE hProcess, uintptr_t address) {
+        T value;
+        BOOL result = ReadProcessMemory(hProcess, (LPCVOID)address, &value, sizeof(T), nullptr);
+
+        if (!result) {
+            std::cout << "ReadMemory Error: " << GetLastError() << std::endl;
+            return T{};
+        }
+        return value;
+    }
+
+	DWORD WriteMemory(HANDLE hProcess, uintptr_t address, int newValue);
 };
 
 extern Memory mem;

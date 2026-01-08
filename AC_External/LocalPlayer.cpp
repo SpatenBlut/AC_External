@@ -3,7 +3,7 @@
 uintptr_t offsets;
 
 void HealthHack(HANDLE hProcess) {
-	offsets = mem.ReadMemory(hProcess, offset::LocalPlayer);
+	offsets = mem.ReadMemory <uintptr_t>(hProcess, offset::LocalPlayer);
 	uintptr_t healthAddress = offsets + offset::HealthOffset;
 	DWORD wpmOutput = mem.WriteMemory(hProcess, healthAddress, 9999);
 }
@@ -27,30 +27,30 @@ void FastFire(HANDLE hProcess) {
 }
 
 void LocalPlayerViewAngel(HANDLE hProcess) {
-	uintptr_t LocalPlayer = mem.ReadMemory(hProcess, offset::LocalPlayer);
+	uintptr_t LocalPlayer = mem.ReadMemory<uintptr_t>(hProcess, offset::LocalPlayer);
 
 	uintptr_t Pitch = LocalPlayer + offset::PlayerCameraY; // y Angel
 	uintptr_t Yaw = LocalPlayer + offset::PlayerCameraX; // x Angel
 
-	int rawPitch = mem.ReadMemory(hProcess, Pitch);
-	int rawYaw = mem.ReadMemory(hProcess, Yaw);
+	float PitchOutput = mem.ReadMemory<float>(hProcess, Pitch);
+	float YawOutput = mem.ReadMemory<float>(hProcess, Yaw);
 
-	std::cout << "LocalPlayer" << "   Pitch " << convertToFloat(rawPitch) << "    Yaw " << convertToFloat(rawYaw) << std::endl; // View Angel
+	std::cout << "LocalPlayer" << "   Pitch " << PitchOutput << "    Yaw " << YawOutput << std::endl; // View Angel
 }
 
 void LocalPlayerPosition(HANDLE hProcess) {
 
-	uintptr_t LocalPlayer = mem.ReadMemory(hProcess, offset::LocalPlayer);
+	uintptr_t LocalPlayer = mem.ReadMemory <uintptr_t>(hProcess, offset::LocalPlayer);
 
 	uintptr_t HeadAddressX = LocalPlayer + offset::HeadPositionX;
 	uintptr_t HeadAddressY = LocalPlayer + offset::HeadPositionY;
 	uintptr_t HeadAddressZ = LocalPlayer + offset::HeadPositionZ;
 
-	int rawX = mem.ReadMemory(hProcess, HeadAddressX); 
-	int rawY = mem.ReadMemory(hProcess, HeadAddressY);
-	int rawZ = mem.ReadMemory(hProcess, HeadAddressZ);
+	float OutputX = mem.ReadMemory<float>(hProcess, HeadAddressX);
+	float OutputY = mem.ReadMemory<float>(hProcess, HeadAddressY);
+	float OutputZ = mem.ReadMemory<float>(hProcess, HeadAddressZ);
 
-	std::cout << "LocalPlayer" << "   X " << convertToFloat(rawX) << "    Y " << convertToFloat(rawY) << "    Z " << convertToFloat(rawZ) << std::endl; // Head Position
+	std::cout << "LocalPlayer" << "   X " << OutputX << "    Y " << OutputY << "    Z " << OutputZ << std::endl; // Head Position
 }
 
 
