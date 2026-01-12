@@ -3,6 +3,7 @@
 #include "memory.h"
 #include "EntityList.h"
 #include "LocalPlayer.h"
+#include "aimbot.h"
 
 int main()
 {
@@ -16,6 +17,7 @@ int main()
 	std::cout << "AC External Injected!\n";
 	Sleep(1000);
 
+
 	while (true) {
 
 		HealthHack(hProcess);
@@ -27,12 +29,12 @@ int main()
 
 		LocalPlayerViewAngel(hProcess);
 		LocalPlayerPosition(hProcess);
-		entitylist(hProcess);
+		Aimbot(hProcess);
 
-		Sleep(500);
 	}	
 
 	CloseHandle(hProcess);// close handle
+	std::cin.get();
 	
 	return 0;
 }

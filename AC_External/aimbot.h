@@ -6,3 +6,6 @@
 #include "offset.h"
 #include "LocalPlayer.h"
 
+void Aimbot(HANDLE hProcess);
+
+

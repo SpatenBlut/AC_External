@@ -1,8 +1,14 @@
 #pragma once
 #include <Windows.h>
 #include <iostream>
+#include <vector>
 #include "offset.h"
 #include "memory.h"
 
-void entitylist(HANDLE hProcess);
-float convertToFloat(int rawValue);
+struct Enemy {
+    float x;
+    float y;
+    float z;
+};
+
+std::vector<Enemy>GetEntitys(HANDLE hProcess);
