@@ -27,14 +27,13 @@ int main()
 
 		system("cls");
 
-		LocalPlayerViewAngel(hProcess);
-		LocalPlayerPosition(hProcess);
 		Aimbot(hProcess);
 
-	}	
+		Sleep(1);
+	}
 
 	CloseHandle(hProcess);// close handle
 	std::cin.get();
-	
+
 	return 0;
 }

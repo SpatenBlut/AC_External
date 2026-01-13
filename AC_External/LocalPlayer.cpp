@@ -53,5 +53,30 @@ void LocalPlayerPosition(HANDLE hProcess) {
 	std::cout << "LocalPlayer" << "   X " << OutputX << "    Y " << OutputY << "    Z " << OutputZ << std::endl; // Head Position
 }
 
+// Neue Funktion: Gibt ViewAngles als Struct zurück
+ViewAngles GetLocalPlayerViewAngles(HANDLE hProcess) {
+	ViewAngles angles;
 
+	uintptr_t LocalPlayer = mem.ReadMemory<uintptr_t>(hProcess, offset::LocalPlayer);
 
+	uintptr_t Pitch = LocalPlayer + offset::PlayerCameraY; // y Angel
+	uintptr_t Yaw = LocalPlayer + offset::PlayerCameraX; // x Angel
+
+	angles.pitch = mem.ReadMemory<float>(hProcess, Pitch);
+	angles.yaw = mem.ReadMemory<float>(hProcess, Yaw);
+
+	return angles;
+}
+
+// Neue Funktion: Gibt Position als Struct zurück
+Position GetLocalPlayerPosition(HANDLE hProcess) {
+	Position pos;
+
+	uintptr_t LocalPlayer = mem.ReadMemory<uintptr_t>(hProcess, offset::LocalPlayer);
+
+	pos.x = mem.ReadMemory<float>(hProcess, LocalPlayer + offset::HeadPositionX);
+	pos.y = mem.ReadMemory<float>(hProcess, LocalPlayer + offset::HeadPositionY);
+	pos.z = mem.ReadMemory<float>(hProcess, LocalPlayer + offset::HeadPositionZ);
+
+	return pos;
+}
