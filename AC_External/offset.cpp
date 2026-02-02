@@ -10,8 +10,8 @@ namespace offset
 	uintptr_t HeadPositionX = 0;
 	uintptr_t HeadPositionY = 0;
 	uintptr_t HeadPositionZ = 0;
-	uintptr_t PlayerCameraX = 0;
-	uintptr_t PlayerCameraY = 0;
+	uintptr_t Yaw = 0;
+	uintptr_t Pitch = 0;
 	uintptr_t RifleAmmo = 0;
 	uintptr_t SubmachineAmmo = 0;
 	uintptr_t SniperAmmo = 0;
@@ -32,9 +32,9 @@ namespace offset
 		PistolAmmo = 0x12C;
 		GrenadeAmmo = 0x144;
 		HeadPositionX =  0x4;
-		HeadPositionY =  0xC;
-		HeadPositionZ =  0x8;
-		PlayerCameraX =  0x34;
-		PlayerCameraY =  0x38;
+		HeadPositionY =  0x8;
+		HeadPositionZ =  0xC;
+		Yaw = 0x38;
+		Pitch = 0x34;
 	}
 }

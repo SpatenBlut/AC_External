@@ -5,8 +5,8 @@
 
 // Struct für View Angles
 struct ViewAngles {
-    float pitch;  // y Angel
-    float yaw;    // x Angel
+    float pitch;  // x Angel
+    float yaw;    // y Angel
 };
 
 // Struct für Position

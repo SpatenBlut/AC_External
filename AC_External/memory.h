@@ -21,7 +21,19 @@ public:
         return value;
     }
 
-	DWORD WriteMemory(HANDLE hProcess, uintptr_t address, int newValue);
+    template<typename T>
+    bool WriteMemory(HANDLE hProcess, uintptr_t address, T newValue) {
+        BOOL result = WriteProcessMemory(hProcess, (LPVOID)address, &newValue, sizeof(T), nullptr);
+
+        if (result) {
+            return true;
+        }
+        else {
+            std::cout << "WriteMemory Error: " << GetLastError() << std::endl;
+            return false;
+        }
+    }
+
 };
 
 extern Memory mem;

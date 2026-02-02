@@ -5,32 +5,32 @@ uintptr_t offsets;
 void HealthHack(HANDLE hProcess) {
 	offsets = mem.ReadMemory <uintptr_t>(hProcess, offset::LocalPlayer);
 	uintptr_t healthAddress = offsets + offset::HealthOffset;
-	DWORD wpmOutput = mem.WriteMemory(hProcess, healthAddress, 9999);
+	DWORD wpmOutput = mem.WriteMemory<DWORD>(hProcess, healthAddress, 9999);
 }
 
 void AmmoHack(HANDLE hProcess) {
 	uintptr_t RifleAmmoAddress = offsets + offset::RifleAmmo;
-	DWORD wpmRifleOutput = mem.WriteMemory(hProcess, RifleAmmoAddress, 999);
+	DWORD wpmRifleOutput = mem.WriteMemory<DWORD>(hProcess, RifleAmmoAddress, 999);
 	uintptr_t SubmachineAmmoAddress = offsets + offset::SubmachineAmmo;
-	DWORD wpmSubmachineOutput = mem.WriteMemory(hProcess, SubmachineAmmoAddress, 999);
+	DWORD wpmSubmachineOutput = mem.WriteMemory<DWORD>(hProcess, SubmachineAmmoAddress, 999);
 	uintptr_t SniperAmmoAddress = offsets + offset::SniperAmmo;
-	DWORD wpmSniperOutput = mem.WriteMemory(hProcess, SniperAmmoAddress, 999);
+	DWORD wpmSniperOutput = mem.WriteMemory<DWORD>(hProcess, SniperAmmoAddress, 999);
 	uintptr_t PistolAmmoAddress = offsets + offset::PistolAmmo;
-	DWORD wpmPistolOutput = mem.WriteMemory(hProcess, PistolAmmoAddress, 999);
+	DWORD wpmPistolOutput = mem.WriteMemory<DWORD>(hProcess, PistolAmmoAddress, 999);
 	uintptr_t GrenadeAmmoAddress = offsets + offset::GrenadeAmmo;
-	DWORD wpmGrenadeOutput = mem.WriteMemory(hProcess, GrenadeAmmoAddress, 999);
+	DWORD wpmGrenadeOutput = mem.WriteMemory<DWORD>(hProcess, GrenadeAmmoAddress, 999);
 }
 
 void FastFire(HANDLE hProcess) {
 	uintptr_t FastFireAddress = offsets + offset::FastFireRifle;
-	DWORD wpmFastFireOutput = mem.WriteMemory(hProcess, FastFireAddress, 0);
+	DWORD wpmFastFireOutput = mem.WriteMemory<DWORD>(hProcess, FastFireAddress, 0);
 }
 
 void LocalPlayerViewAngel(HANDLE hProcess) {
 	uintptr_t LocalPlayer = mem.ReadMemory<uintptr_t>(hProcess, offset::LocalPlayer);
 
-	uintptr_t Pitch = LocalPlayer + offset::PlayerCameraY; // y Angel
-	uintptr_t Yaw = LocalPlayer + offset::PlayerCameraX; // x Angel
+	uintptr_t Pitch = LocalPlayer + offset::Pitch; // x Angel
+	uintptr_t Yaw = LocalPlayer + offset::Yaw; // y Angel
 
 	float PitchOutput = mem.ReadMemory<float>(hProcess, Pitch);
 	float YawOutput = mem.ReadMemory<float>(hProcess, Yaw);
@@ -53,14 +53,14 @@ void LocalPlayerPosition(HANDLE hProcess) {
 	std::cout << "LocalPlayer" << "   X " << OutputX << "    Y " << OutputY << "    Z " << OutputZ << std::endl; // Head Position
 }
 
-// Neue Funktion: Gibt ViewAngles als Struct zurück
+// Gibt ViewAngles als Struct zurück
 ViewAngles GetLocalPlayerViewAngles(HANDLE hProcess) {
 	ViewAngles angles;
 
 	uintptr_t LocalPlayer = mem.ReadMemory<uintptr_t>(hProcess, offset::LocalPlayer);
 
-	uintptr_t Pitch = LocalPlayer + offset::PlayerCameraY; // y Angel
-	uintptr_t Yaw = LocalPlayer + offset::PlayerCameraX; // x Angel
+	uintptr_t Pitch = LocalPlayer + offset::Yaw; // x Angel
+	uintptr_t Yaw = LocalPlayer + offset::Pitch; // y Angel
 
 	angles.pitch = mem.ReadMemory<float>(hProcess, Pitch);
 	angles.yaw = mem.ReadMemory<float>(hProcess, Yaw);

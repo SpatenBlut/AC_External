@@ -28,6 +28,9 @@ int main()
 		system("cls");
 
 		Aimbot(hProcess);
+		if (GetAsyncKeyState(VK_END)) {
+			Sleep(10000);
+		}
 
 		Sleep(1);
 	}

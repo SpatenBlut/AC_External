@@ -14,8 +14,8 @@ namespace offset
 	extern uintptr_t HeadPositionX;
 	extern uintptr_t HeadPositionY;
 	extern uintptr_t HeadPositionZ;
-	extern uintptr_t PlayerCameraX;
-	extern uintptr_t PlayerCameraY;
+	extern uintptr_t Yaw;
+	extern uintptr_t Pitch;
 	extern uintptr_t RifleAmmo;
 	extern uintptr_t SubmachineAmmo;
 	extern uintptr_t SniperAmmo;

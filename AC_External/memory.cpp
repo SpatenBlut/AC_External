@@ -66,15 +66,3 @@ HANDLE Memory::OpenProcessHandle(DWORD processId) {
 		std::cout << "OpenProcess Error " << GetLastError() << std::endl; // open process handle failed
 	}
 }
-
-DWORD Memory::WriteMemory(HANDLE hProcess, uintptr_t address, int newValue) {
-	BOOL result = WriteProcessMemory(hProcess, (LPVOID)address, &newValue, sizeof(newValue), nullptr); // write memory function
-
-    if (result) {
-		//std::cout << "[wpm] success\n"; // wpm successful
-    }
-    else {
-		DWORD errorCode = GetLastError(); // wpm failed
-        return errorCode;
-    }
-}
