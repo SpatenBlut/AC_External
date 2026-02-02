@@ -27,12 +27,12 @@ int main()
 
 		system("cls");
 
-		Aimbot(hProcess);
+		aimbot(hProcess);
 		if (GetAsyncKeyState(VK_END)) {
 			Sleep(10000);
 		}
 
-		Sleep(1);
+		Sleep(10);
 	}
 
 	CloseHandle(hProcess);// close handle

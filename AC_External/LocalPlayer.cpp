@@ -29,13 +29,11 @@ void FastFire(HANDLE hProcess) {
 void LocalPlayerViewAngel(HANDLE hProcess) {
 	uintptr_t LocalPlayer = mem.ReadMemory<uintptr_t>(hProcess, offset::LocalPlayer);
 
-	uintptr_t Pitch = LocalPlayer + offset::Pitch; // x Angel
-	uintptr_t Yaw = LocalPlayer + offset::Yaw; // y Angel
+	uintptr_t Pitch = LocalPlayer + offset::Pitch;
+	uintptr_t Yaw = LocalPlayer + offset::Yaw;
 
 	float PitchOutput = mem.ReadMemory<float>(hProcess, Pitch);
 	float YawOutput = mem.ReadMemory<float>(hProcess, Yaw);
-
-	std::cout << "LocalPlayer" << "   Pitch " << PitchOutput << "    Yaw " << YawOutput << std::endl; // View Angel
 }
 
 void LocalPlayerPosition(HANDLE hProcess) {
@@ -49,8 +47,6 @@ void LocalPlayerPosition(HANDLE hProcess) {
 	float OutputX = mem.ReadMemory<float>(hProcess, HeadAddressX);
 	float OutputY = mem.ReadMemory<float>(hProcess, HeadAddressY);
 	float OutputZ = mem.ReadMemory<float>(hProcess, HeadAddressZ);
-
-	std::cout << "LocalPlayer" << "   X " << OutputX << "    Y " << OutputY << "    Z " << OutputZ << std::endl; // Head Position
 }
 
 // Gibt ViewAngles als Struct zurück
