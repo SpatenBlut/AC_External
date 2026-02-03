@@ -26,30 +26,7 @@ void FastFire(HANDLE hProcess) {
 	DWORD wpmFastFireOutput = mem.WriteMemory<DWORD>(hProcess, FastFireAddress, 0);
 }
 
-void LocalPlayerViewAngel(HANDLE hProcess) {
-	uintptr_t LocalPlayer = mem.ReadMemory<uintptr_t>(hProcess, offset::LocalPlayer);
-
-	uintptr_t Pitch = LocalPlayer + offset::Pitch;
-	uintptr_t Yaw = LocalPlayer + offset::Yaw;
-
-	float PitchOutput = mem.ReadMemory<float>(hProcess, Pitch);
-	float YawOutput = mem.ReadMemory<float>(hProcess, Yaw);
-}
-
-void LocalPlayerPosition(HANDLE hProcess) {
-
-	uintptr_t LocalPlayer = mem.ReadMemory <uintptr_t>(hProcess, offset::LocalPlayer);
-
-	uintptr_t HeadAddressX = LocalPlayer + offset::HeadPositionX;
-	uintptr_t HeadAddressY = LocalPlayer + offset::HeadPositionY;
-	uintptr_t HeadAddressZ = LocalPlayer + offset::HeadPositionZ;
-
-	float OutputX = mem.ReadMemory<float>(hProcess, HeadAddressX);
-	float OutputY = mem.ReadMemory<float>(hProcess, HeadAddressY);
-	float OutputZ = mem.ReadMemory<float>(hProcess, HeadAddressZ);
-}
-
-// Gibt ViewAngles als Struct zurück
+// Gibt ViewAngles als Struct zurÃ¼ck
 ViewAngles GetLocalPlayerViewAngles(HANDLE hProcess) {
 	ViewAngles angles;
 
@@ -64,7 +41,7 @@ ViewAngles GetLocalPlayerViewAngles(HANDLE hProcess) {
 	return angles;
 }
 
-// Neue Funktion: Gibt Position als Struct zurück
+// Neue Funktion: Gibt Position als Struct zurÃ¼ck
 Position GetLocalPlayerPosition(HANDLE hProcess) {
 	Position pos;
 
