@@ -32,8 +32,8 @@ ViewAngles GetLocalPlayerViewAngles(HANDLE hProcess) {
 
 	uintptr_t LocalPlayer = mem.ReadMemory<uintptr_t>(hProcess, offset::LocalPlayer);
 
-	uintptr_t Pitch = LocalPlayer + offset::Yaw; // x Angel
-	uintptr_t Yaw = LocalPlayer + offset::Pitch; // y Angel
+	uintptr_t Yaw = LocalPlayer + offset::Yaw; // x Angel
+	uintptr_t Pitch = LocalPlayer + offset::Pitch; // y Angel
 
 	angles.pitch = mem.ReadMemory<float>(hProcess, Pitch);
 	angles.yaw = mem.ReadMemory<float>(hProcess, Yaw);
