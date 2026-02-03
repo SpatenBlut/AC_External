@@ -28,11 +28,9 @@ int main()
 		system("cls");
 
 		aimbot(hProcess);
-		if (GetAsyncKeyState(VK_END)) {
+		if (GetAsyncKeyState(VK_INSERT)) {
 			Sleep(10000);
 		}
-
-		Sleep(10);
 	}
 
 	CloseHandle(hProcess);// close handle
