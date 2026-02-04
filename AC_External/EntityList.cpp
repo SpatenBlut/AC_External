@@ -19,6 +19,7 @@ std::vector<Enemy>GetEntitys(HANDLE hProcess) {
 		e.x = mem.ReadMemory<float>(hProcess, entityBase + offset::HeadPositionX);
 		e.y = mem.ReadMemory<float>(hProcess, entityBase + offset::HeadPositionY);
 		e.z = mem.ReadMemory<float>(hProcess, entityBase + offset::HeadPositionZ);
+		e.Health = mem.ReadMemory<int>(hProcess, entityBase + offset::HealthOffset);
 
 		enemies.push_back(e); // add vector element
 	}

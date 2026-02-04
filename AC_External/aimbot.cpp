@@ -23,6 +23,11 @@ void aimbot(HANDLE hProcess) {
         float dx = enemies[i].x - localPos.x;
         float dy = enemies[i].y - localPos.y;
         float dz = enemies[i].z - localPos.z;
+        int health = enemies[i].Health;
+
+        if (health <= 0) {
+            continue; // skip dead enemies
+		}
 
 		// calculate distance
         float distance = sqrt(dx * dx + dy * dy + dz * dz);
@@ -31,8 +36,7 @@ void aimbot(HANDLE hProcess) {
             closestDistance = distance;
             closestEnemyIndex = i;
         }
-
-        
+                
     }
 
     if (closestEnemyIndex != -1) {

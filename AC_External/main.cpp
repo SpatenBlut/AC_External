@@ -31,6 +31,8 @@ int main()
 		if (GetAsyncKeyState(VK_INSERT)) {
 			Sleep(10000);
 		}
+
+		Sleep(5);
 	}
 
 	CloseHandle(hProcess);// close handle

@@ -9,6 +9,7 @@ struct Enemy {
     float x;
     float y;
     float z;
+	int Health;
 };
 
 std::vector<Enemy>GetEntitys(HANDLE hProcess);
