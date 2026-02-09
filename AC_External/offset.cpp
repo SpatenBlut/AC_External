@@ -34,7 +34,7 @@ namespace offset
 		HeadPositionX =  0x4;
 		HeadPositionY =  0x8;
 		HeadPositionZ =  0xC;
-		Yaw = 0x38;
-		Pitch = 0x34;
+		Yaw = 0x34;
+		Pitch = 0x38;
 	}
 }

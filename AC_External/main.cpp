@@ -32,7 +32,7 @@ int main()
 			Sleep(10000);
 		}
 
-		Sleep(5);
+		//Sleep(5);
 	}
 
 	CloseHandle(hProcess);// close handle

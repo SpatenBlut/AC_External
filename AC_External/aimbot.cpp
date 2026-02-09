@@ -39,7 +39,11 @@ void aimbot(HANDLE hProcess) {
                 
     }
 
-    if (closestEnemyIndex != -1) {
+    if (enemies[closestEnemyIndex].Health <= 0) {
+        return;
+    }
+    else {
+        closestEnemyIndex != -1;
         float dx = enemies[closestEnemyIndex].x - localPos.x;
         float dy = enemies[closestEnemyIndex].y - localPos.y;
         float dz = enemies[closestEnemyIndex].z - localPos.z;
@@ -53,9 +57,8 @@ void aimbot(HANDLE hProcess) {
         delta_pitch = target_pitch - localAngles.pitch;
     }
 
-
 	if (GetAsyncKeyState(VK_XBUTTON2) & 0x8000) {
-        mem.WriteMemory<float>(hProcess, PitchAddress, localAngles.yaw + delta_yaw);
-        mem.WriteMemory<float>(hProcess, YawAddress, localAngles.pitch + delta_pitch);
+        mem.WriteMemory<float>(hProcess, YawAddress, localAngles.yaw + delta_yaw);
+        mem.WriteMemory<float>(hProcess, PitchAddress, localAngles.pitch + delta_pitch);
     }
 }
