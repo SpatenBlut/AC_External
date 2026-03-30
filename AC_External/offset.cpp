@@ -6,6 +6,7 @@ namespace offset
 	uintptr_t LocalPlayer = 0;
 	uintptr_t PlayerCount = 0;
 	uintptr_t EntityList = 0;
+	uintptr_t ViewMatrix = 0;
 	uintptr_t HealthOffset = 0;
 	uintptr_t HeadPositionX = 0;
 	uintptr_t HeadPositionY = 0;
@@ -24,6 +25,7 @@ namespace offset
 		LocalPlayer = baseAddress + 0x0017E0A8;
 		PlayerCount = baseAddress + 0x18AC0C;
 		EntityList = baseAddress + 0x18AC04;
+		ViewMatrix = baseAddress + 0x17E0A0;
 		HealthOffset = 0xEC;
 		FastFireRifle = 0x164;
 		RifleAmmo = 0x140;

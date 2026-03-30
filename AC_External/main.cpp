@@ -6,6 +6,8 @@
 #include "EntityList.h"
 #include "LocalPlayer.h"
 #include "aimbot.h"
+#include "ImDx11.h"
+#include "draw.h"
 
 DWORD processId = 0;
 HANDLE hProcess = NULL;
@@ -62,6 +64,7 @@ void Init() {
 int main()
 {
     Init();
+    std::atomic<double> ms = 0.0;
 
     offset::Init(baseAddress);
     std::cout << "AC External Injected!\n";
@@ -76,19 +79,42 @@ int main()
         }
     });
 
-    std::thread t2([]() {
+    std::thread t2([&ms]() {
         while (true) {
-            aimbot(hProcess);
+
+            LARGE_INTEGER freq, start, end;
+            QueryPerformanceFrequency(&freq);
+            QueryPerformanceCounter(&start);
+            UpdateEntityList(hProcess);
+
+            QueryPerformanceCounter(&end);
+            ms = (double)(end.QuadPart - start.QuadPart) / freq.QuadPart * 1000.0;
+            
             Sleep(1);
         }
     });
 
+    std::thread t3([]() {
+        while (true) {
+            aimbot(hProcess);
+        }
+	});
+
+	std::thread t4([]() {
+        DrawInit(hProcess);
+        InitDraw();
+    });
+
     while (true) {
-        
+        std::cout << "Zeit: " << ms.load() << " ms\n";
+		Sleep(500);
+		system("cls");
 	}
 
     t1.detach();
     t2.detach();
+	t3.detach();
+	t4.detach();
 
     CloseHandle(hProcess);
     return 0;

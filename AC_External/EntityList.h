@@ -1,15 +1,15 @@
 #pragma once
-#include <Windows.h>
-#include <iostream>
+#include <windows.h>
 #include <vector>
-#include "offset.h"
-#include "memory.h"
+#include <mutex>
 
 struct Enemy {
-    float x;
-    float y;
-    float z;
-	int Health;
+    float x, y, z;
+    int Health;
 };
 
-std::vector<Enemy>GetEntitys(HANDLE hProcess);
+extern std::vector<Enemy> g_Enemies;
+extern std::mutex          g_EnemiesMutex;  // immer locken bevor du g_Enemies liest/schreibst
+
+void UpdateEntityList(HANDLE hProcess);
+std::vector<Enemy> GetEntitys(HANDLE hProcess);

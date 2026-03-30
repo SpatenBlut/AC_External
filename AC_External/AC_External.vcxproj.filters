@@ -29,6 +29,8 @@
     <ClCompile Include="imgui\imgui_widgets.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
+    <ClCompile Include="Draw.cpp" />
+    <ClCompile Include="ImDx11.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aimbot.h" />
@@ -58,6 +60,8 @@
     <ClInclude Include="imgui\imstb_truetype.h">
       <Filter>imgui</Filter>
     </ClInclude>
+    <ClInclude Include="Draw.h" />
+    <ClInclude Include="ImDx11.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="offset.h" />

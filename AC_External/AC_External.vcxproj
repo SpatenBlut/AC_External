@@ -129,6 +129,8 @@
   <ItemGroup>
     <ClCompile Include="aimbot.cpp" />
     <ClCompile Include="EntityList.cpp" />
+    <ClCompile Include="Draw.cpp" />
+    <ClCompile Include="ImDx11.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
     <ClCompile Include="imgui\imgui_draw.cpp" />
@@ -145,6 +147,8 @@
   <ItemGroup>
     <ClInclude Include="aimbot.h" />
     <ClInclude Include="EntityList.h" />
+    <ClInclude Include="Draw.h" />
+    <ClInclude Include="ImDx11.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_dx11.h" />
