@@ -6,6 +6,7 @@
 #include "EntityList.h"
 #include "LocalPlayer.h"
 #include "aimbot.h"
+#include "dx11.h"
 
 DWORD processId = 0;
 HANDLE hProcess = NULL;
@@ -79,8 +80,18 @@ int main()
     std::thread t2([]() {
         while (true) {
             aimbot(hProcess);
-            Sleep(1);
         }
+    });
+
+	std::thread t3([]() {
+        while (true) {
+            ReadEntitys(hProcess);
+			Sleep(1); //cpu entlasten
+        }
+    });
+
+    std::thread t4([]() {
+         DrawEsp();
     });
 
     while (true) {
@@ -89,6 +100,8 @@ int main()
 
     t1.detach();
     t2.detach();
+	t3.detach();
+	t4.detach();
 
     CloseHandle(hProcess);
     return 0;

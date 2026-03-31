@@ -10,6 +10,7 @@ namespace offset
 	extern uintptr_t LocalPlayer;
 	extern uintptr_t PlayerCount;
 	extern uintptr_t EntityList;
+	extern uintptr_t ViewMatrix;
 	extern uintptr_t HealthOffset;
 	extern uintptr_t HeadPositionX;
 	extern uintptr_t HeadPositionY;
