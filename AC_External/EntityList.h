@@ -7,7 +7,7 @@
 #include "memory.h"
 
 struct Enemy {
-    float x, y, z;
+    float x, y, z; // Kopf
     int Health;
 };
 
