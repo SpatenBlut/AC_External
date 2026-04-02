@@ -25,6 +25,7 @@ void aimbot(HANDLE hProcess) {
         float dz = enemies[i].z - localPos.z;
         int health = enemies[i].Health;
 
+
         if (health <= 0) {
             continue; // skip dead enemies
 		}

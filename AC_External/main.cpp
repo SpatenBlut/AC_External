@@ -95,7 +95,7 @@ int main()
     });
 
     while (true) {
-        
+
 	}
 
     t1.detach();

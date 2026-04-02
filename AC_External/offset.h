@@ -23,4 +23,5 @@ namespace offset
 	extern uintptr_t PistolAmmo;
 	extern uintptr_t GrenadeAmmo;
 	extern uintptr_t FastFireRifle;
+	extern uintptr_t PlayerName;
 }

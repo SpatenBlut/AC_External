@@ -19,6 +19,7 @@ namespace offset
 	uintptr_t PistolAmmo = 0;
 	uintptr_t GrenadeAmmo = 0;
 	uintptr_t FastFireRifle = 0;
+	uintptr_t PlayerName = 0;
 
 	void Init(uintptr_t base) {
 		baseAddress = base;
@@ -38,5 +39,6 @@ namespace offset
 		HeadPositionZ =  0xC;
 		Yaw = 0x34;
 		Pitch = 0x38;
+		PlayerName = 0x205;
 	}
 }

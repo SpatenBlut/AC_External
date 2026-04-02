@@ -7,8 +7,9 @@
 #include "memory.h"
 
 struct Enemy {
-    float x, y, z; // Kopf
+    float x, y, z;
     int Health;
+	std::string Name;
 };
 
 extern std::vector<Enemy> g_enemies;

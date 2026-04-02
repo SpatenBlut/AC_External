@@ -5,5 +5,6 @@
 #include "EntityList.h"
 #include "memory.h"
 #include "offset.h"
+#include "LocalPlayer.h"
 
 void esp();

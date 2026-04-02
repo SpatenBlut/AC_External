@@ -88,7 +88,7 @@ void DrawEsp() {
         g_Context->OMSetRenderTargets(1, &g_RTV, nullptr);
         g_Context->ClearRenderTargetView(g_RTV, clear);
         ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
-        g_Chain->Present(0, 0);
+        g_Chain->Present(1, 0);
     }
 
 cleanup:
